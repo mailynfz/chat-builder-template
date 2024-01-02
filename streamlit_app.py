@@ -82,6 +82,15 @@ st.divider()
 
 # DISPLAY SIDEBAR IMAGE
 if image_filepath != "":
+    if image_filepath.startswith("http"):
+        html_str = f"""
+                    <div style="text-align: center;">
+                    <img src='{image_filepath}' style='height:150px;'/>
+                    </div>
+                    """
+        st.sidebar.markdown(html_str, unsafe_allow_html=True)
+        st.sidebar.divider()
+else:
     image = Image.open(image_filepath)
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.divider()
