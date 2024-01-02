@@ -4,7 +4,7 @@
 
 This template enables professors and educators to easily create their own teaching assistant chatbots. It leverages Streamlit for web interfacing and OpenAI's Assistants API for chat functionality, offering customizable features to suit various teaching needs.
 
-This is the template used by Chat-Lab.AI's *Chat Builder*.
+This is the template used by Chat-Lab.AI's *Chat Builder*. You can see a [live version of this template app here](https://chat-builder-template.streamlit.app/).
 
 ### Requirements
 
@@ -23,8 +23,7 @@ This is the template used by Chat-Lab.AI's *Chat Builder*.
 - `instructions`: Provide instructions or guidelines for using the chatbot. Note that this field accepts Markdown.
 - `chat_box_text`: Enter the default text to appear in the chat box.
 - `sidebar_text`: Provide additional text for the sidebar. Note that this field accepts Markdown.
-- `user_name`: Enter your name.
-- `user_email`: Enter an email address.
+- `user_name` and `user_email`: Enter your contact info here. Users are advised of the potential for incorrect responses when they initialize a new chat. Your name (with a link to your email address) will appear in this warning message, allowing users to report any errors in chat responses. You'll have to adjust the warning message defined in the `ai_warning_text` variable if you leave `user_name` and/or `user_email` blank, as the warning message depends on these two variables as currently written.
 - `footer_text`: Provide text for the footer.
 - `image_filepath`: if you choose to use your own image, just write the file name here. Remember to upload the image to your GitHub repo along with these files before deploying your app. By default, it is set to display the chat-lab.ai logo. If left blank, the app will not display a sidebar image.
 - `heading_color`: Choose a color for the heading text using Hex numbers. If left blank, headings default to black otherwise.
