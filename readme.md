@@ -68,7 +68,7 @@ Streamlit Cloud will automatically host it based on the contents of your reposit
 <figure>
     <img src="https://chat-builder.nyc3.cdn.digitaloceanspaces.com/streamlit-app-setup-secrets.png"
          alt="Secrets Settings">
-    <figcaption>Demo app secrets settings. Note, none of these values are real.</figcaption>
+    <figcaption>*Demo app secrets settings. Note, none of these values are real.*</figcaption>
 </figure>
 
 ### Additional Customization
