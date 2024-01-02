@@ -6,33 +6,32 @@ from PIL import Image
 # USER DEFINED VARIABLES
 
 # Set the title and icon for the site
-site_title = "userInput_site_title"
-site_icon = "userInput_site_icon"
+site_title = "Site Title"
+site_icon = "😎"
 
-page_heading = "userInput_page_heading" # Page heading defaults to site_title if left blank
+page_heading = "Page Heading" # Page heading defaults to site_title if left blank
 
 # Set the color of the heading text
-heading_color = "userInput_heading_color"
+heading_color = ""
 
 # Set text for the main chat area
-description = f"""userInput_description"""
-instructions = f"""userInput_instructions"""
-chat_box_text = f"""userInput_chat_box_text"""
+description = f"""Description"""
+instructions = f"""Instructions"""
+chat_box_text = f"""Chat box text"""
 
 # Set text for the sidebar
-sidebar_text = f"""userInput_sidebar_text"""
-user_name = "userInput_user_name"
-user_email = "userInput_user_email" 
-footer_text = f"""userInput_footer_text"""
+sidebar_text = f"""Sidebar text"""
+user_name = "User name"
+user_email = "User email" 
+footer_text = f"""Footer text"""
 
 # Optional: Add a logo to the sidebar
-image_default = "userInput_image_default"
-image_filepath = "userInput_image_filepath"
-
+image_filepath = "https://chat-lab-asssets.nyc3.cdn.digitaloceanspaces.com/Chat-lab-bubble-logo-no_tail-removebg-white_face.png"
 
 # SET DEFAULT TEXT FOR WARNING AND ERROR MESSAGES
+# DO NOT CHANGE THIS TEXT:
 error_message = f"**ERROR:** Please enter your API key AND click \'Start New Chat\' to get started."        
-
+# DO NOT CHANGE THIS TEXT:
 ai_warning_text = f"**WARNING:** This app uses the same GPT models as ChatGPT, which can make mistakes. Please verify information from chat responses in this app and report any errors to [{user_name}](mailto:{user_email})."
 
 # SET STREAMLIT PAGE CONFIGURATION
@@ -82,18 +81,7 @@ st.markdown(instructions)
 st.divider()
 
 # DISPLAY SIDEBAR IMAGE
-if image_filepath == "":
-    if image_default == "True":
-        image_url = "https://chat-lab-asssets.nyc3.cdn.digitaloceanspaces.com/Chat-lab-bubble-logo-no_tail-removebg-white_face.png"
-        link_url = "https://chat-lab.ai"
-        html_str = f"""
-                    <div style="text-align: center;">
-                    <a href='{link_url}' target='_blank'><img src='{image_url}' style='height:150px;'/></a>
-                    </div>
-                    """
-        st.sidebar.markdown(html_str, unsafe_allow_html=True)
-        st.sidebar.divider()
-else:
+if image_filepath != "":
     image = Image.open(image_filepath)
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.divider()

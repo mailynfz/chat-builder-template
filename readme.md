@@ -13,8 +13,6 @@ This is the template used by Chat-Lab.AI's *Chat Builder*.
 - Streamlit installed (pip install streamlit).
 - A GitHub account for deployment.
 
-## Setup Instructions
-
 ### Filling the Template
 
 - `site_title`: Enter the title of your chatbot site.
@@ -22,35 +20,37 @@ This is the template used by Chat-Lab.AI's *Chat Builder*.
 - `page_heading`: Set the main heading of the page; defaults to site_title if left blank.
 - `heading_color`: Choose the color for the heading text.
 - `description`: Write a brief description for your chatbot.
-- `instructions`: Provide instructions or guidelines for using the chatbot.
-- `chat_box_text`: User should enter the text for the chat box.
-- `sidebar_text`: User should provide text for the sidebar.
-- `user_name`: User should enter a name.
-- `user_email`: User should enter an email address.
-- `footer_text`: User should provide text for the footer.
-- `heading_color`: Choose a color for the heading text using Hex numbers. If not specified, headings default to black otherwise.
+- `instructions`: Provide instructions or guidelines for using the chatbot. Note that this field accepts Markdown.
+- `chat_box_text`: Enter the default text to appear in the chat box.
+- `sidebar_text`: Provide additional text for the sidebar. Note that this field accepts Markdown.
+- `user_name`: Enter your name.
+- `user_email`: Enter an email address.
+- `footer_text`: Provide text for the footer.
+- `image_filepath`: if you choose to use your own image, just write the file name here. Remember to upload the image to your GitHub repo along with these files before deploying your app. By default, it is set to display the chat-lab.ai logo. If left blank, the app will not display a sidebar image.
+- `heading_color`: Choose a color for the heading text using Hex numbers. If left blank, headings default to black otherwise.
 
-Refer to this image to see where these text variables will appear on the chat interface.
+Refer to this image to see where these variables will appear on the chat interface.
 
-<img src="https://chat-builder.nyc3.cdn.digitaloceanspaces.com/app-marked-up.png" alt="Alt text" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 5px 5px 10px rgba(0,0,0,0.3);">
+![Marked Up App](https://chat-builder.nyc3.cdn.digitaloceanspaces.com/app-marked-up.png)
 
 ### Uploading to GitHub
 
 - Create a new repository on GitHub.
-- Upload the modified `streamlit-app.py` and `requirements.txt` file to your repository.
+- Upload the modified `streamlit-app.py`, `requirements.txt`, and (optional) any image file to your repository.
 - The `requirements.txt` list all necessary Python packages, including streamlit and any others used in your template.
+- **Optional**: if you choose to use your own image, you should upload it along with these files to your GitHub repo (and remember to replace the filename in the `image_filepath` variable of the streamlit app)
 
 ### Deploying on Streamlit Cloud
 
+Streamlit Cloud will automatically host it based on the contents of your repository.
+
 - Sign in to Streamlit Cloud using your GitHub account.
-- Connect your GitHub repository containing the chatbot template and requirements.txt.
+- Click on `New App` and select `Use existing repo` option
+- Connect your GitHub repository containing the chatbot files discussed above. Fill in the setup form.
 
-#### Important! Update your OpenAI variables in the app's settings  
+![Create New Streamlit](https://chat-builder.nyc3.cdn.digitaloceanspaces.com/streamlit-app-setup.png)
 
-**Before deploying**, add your OpenAI API key and Assistant ID as "secrets" in the app’s settings:
-
-- Navigate to your app settings on Streamlit Cloud.  
-- Go to the `Secrets` section.
+- Click on `advanced settings` and add your OpenAI variables in the secrets field.
 - Copy and paste the following text exactly:  
 
     ```python
@@ -59,20 +59,18 @@ Refer to this image to see where these text variables will appear on the chat in
     PASSKEY='your_own_password or your_api_key'
     ```
 
-Replace the text inside the quotes for each variable added to the secrets settings. Please be careful not to remove the `'` quotation marks, as they are part of the code.
+- Replace the text inside the quotes for each variable added to the secrets settings. Please be careful not to remove the `'` quotation marks, as they are part of the code.
 
-- `your_api_key_here` = replace this text with your own API key
-- `your_assistant_id` = replace this text with the Assistant ID for the Assistant that you will be using with this chat interface. You can find the Assistant ID on the Assistants page in the OpenAI platform. You can also find it using the Assistants Lab on Chat-Lab.AI, just enter your API key, select your assistant, and navigate to the Assistant Details tab.
-- `your_own_password or your_api_key` = this text gives you the option of creating a password and using that with the interface instead of your API key. Setting your own password has a few benefits, not the least of which is that you don't have to look up your API key everytime you want to use the app. It also lets you share the app and pay for the API costs, if you choose to do so. For instance, if your department will reimburse you for student usage, this would be the easiest way to share the app with students. Otherwise, bright, but wily students could begin incurring API costs outside of this app on your dime. If you don't wish to enable a password, then you should set this variable to your API key. This value should not be left blank. Also, it should not be this default value, unless you want to incur additional API charges from anyone who knows how to crack passwords.
+  - `your_api_key_here` = replace this text with your own API key
+  - `your_assistant_id` = replace this text with the Assistant ID for the Assistant that you will be using with this chat interface. You can find the Assistant ID on the Assistants page in the OpenAI platform. You can also find it using the Assistants Lab on Chat-Lab.AI, just enter your API key, select your assistant, and navigate to the Assistant Details tab.
+  - `your_own_password or your_api_key` = this text gives you the option of creating a password and using that with the interface instead of your API key. Setting your own password has a few benefits, not the least of which is that you don't have to look up your API key everytime you want to use the app. It also lets you share the app and pay for the API costs, if you choose to do so. For instance, if your department will reimburse you for student usage, this would be the easiest way to share the app with students. Otherwise, bright, but wily students could begin incurring API costs outside of this app on your dime. If you don't wish to enable a password, then you should set this variable to your API key. This value should not be left blank. Also, it should not be this default value, unless you want to incur additional API charges from anyone who knows how to crack passwords.
 
-### Deploy your chatbot
+![Secrets Settings](https://chat-builder.nyc3.cdn.digitaloceanspaces.com/streamlit-app-setup-secrets.png)
 
-Streamlit Cloud will automatically host it based on the contents of your repository.
+### Additional Customization
 
-### Customization Tips
-
-- You can further customize the chat interface, such as adding more interactive elements or changing the theme.
-- Experiment with different settings to find what works best for your educational needs.
+- You can further customize the chat interface, such as adding more interactive elements or changing the theme. Experiment with different settings to find what works best for your educational needs.Check out the [Streamlit Docs](https://docs.streamlit.io/) for options and the [Streamlit Gallery](https://streamlit.io/gallery) for ideas.
+- This template is written for the OpenAI Assistants API, but it can easily be customized to work with other LLMs.
 
 ## Support
 
