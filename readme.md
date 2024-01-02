@@ -65,7 +65,11 @@ Streamlit Cloud will automatically host it based on the contents of your reposit
   - `your_assistant_id` = replace this text with the Assistant ID for the Assistant that you will be using with this chat interface. You can find the Assistant ID on the Assistants page in the OpenAI platform. You can also find it using the Assistants Lab on Chat-Lab.AI, just enter your API key, select your assistant, and navigate to the Assistant Details tab.
   - `your_own_password or your_api_key` = this text gives you the option of creating a password and using that with the interface instead of your API key. Setting your own password has a few benefits, not the least of which is that you don't have to look up your API key everytime you want to use the app. It also lets you share the app and pay for the API costs, if you choose to do so. For instance, if your department will reimburse you for student usage, this would be the easiest way to share the app with students. Otherwise, bright, but wily students could begin incurring API costs outside of this app on your dime. If you don't wish to enable a password, then you should set this variable to your API key. This value should not be left blank. Also, it should not be this default value, unless you want to incur additional API charges from anyone who knows how to crack passwords.
 
-![Secrets Settings](https://chat-builder.nyc3.cdn.digitaloceanspaces.com/streamlit-app-setup-secrets.png)
+<figure>
+    <img src="https://chat-builder.nyc3.cdn.digitaloceanspaces.com/streamlit-app-setup-secrets.png"
+         alt="Secrets Settings">
+    <figcaption>Demo app secrets settings. Note, none of these values are real.</figcaption>
+</figure>
 
 ### Additional Customization
 
