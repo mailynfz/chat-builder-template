@@ -4,7 +4,7 @@
 
 This template enables professors and educators to easily create their own teaching assistant chatbots. It leverages Streamlit for web interfacing and OpenAI's Assistants API for chat functionality, offering customizable features to suit various teaching needs.
 
-This is the template used by Chat-Lab.AI's *Chat Builder*. You can see a [live version of this template app here](https://chat-builder-template.streamlit.app/).
+The template used by Chat-Lab.AI's *Chat Builder* is based on this template. You can see a [live version of this template app here](https://chat-builder-template.streamlit.app/).
 
 ### Requirements
 
@@ -69,8 +69,11 @@ Streamlit Cloud will automatically host it based on the contents of your reposit
 
 ### Additional Customization
 
-- You can further customize the chat interface, such as adding more interactive elements or changing the theme. Experiment with different settings to find what works best for your educational needs.Check out the [Streamlit Docs](https://docs.streamlit.io/) for options and the [Streamlit Gallery](https://streamlit.io/gallery) for ideas.
-- This template is written for the OpenAI Assistants API, but it can easily be customized to work with other LLMs.
+This repo also contains a `config.toml` file, which sets the app's default theme to light mode and disables dark mode. The `config.toml` file lets you tweak other options on your Streamlit app, including its styling.[^1] To implement this customization, you'd have to upload a `config.toml` to your GitHub repo along with the other app files. Without this file, as I wrote it here, the app will be rendered in either light or dark mode depending on the user's browser preferences.
+
+You can further customize the chat interface, such as adding more interactive elements or changing the theme. Experiment with different settings to find what works best for your educational needs.Check out the [Streamlit Docs](https://docs.streamlit.io/) for options and the [Streamlit Gallery](https://streamlit.io/gallery) for ideas.
+
+Finally, this template is written for the OpenAI Assistants API, but it can easily be customized to work with other LLMs.
 
 ## Support
 
@@ -78,8 +81,10 @@ For further assistance or queries, please refer to the [Chat-Lab.AI documentatio
 
 ## Video Tutorial
 
-Here is an excellent video tutorial by [@DataProfessor (YouTube)](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) on how to deploy your Streamlit app to the Streamlit Cloud using the procedure I outline here. I cannot improve upon this video, so I'm just going to share it with you all here. Hat tip to the [Data Professor (GitHub)](https://github.com/dataprofessor/).
+Here is an excellent video tutorial by [@DataProfessor (YouTube)](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) on how to deploy your Streamlit app to the Streamlit Cloud using the procedure I outline here. I cannot improve upon this video, so I'm just going to share it here. Hat tip to the [Data Professor (GitHub)](https://github.com/dataprofessor/).
 
 [![Video](https://img.youtube.com/vi/HKoOBiAaHGg/maxresdefault.jpg)][def]
 
 [def]: https://youtu.be/HKoOBiAaHGg?si=PIk10_1EF9F7gus0
+
+[^1]: A `.toml` file is just a text file written in a specific format that is often used for settings and configuration files like this.
