@@ -26,7 +26,7 @@ user_email = "User email"
 footer_text = f"""Footer text"""
 
 # Optional: Add a logo to the sidebar
-image_filepath = "https://chat-lab-asssets.nyc3.cdn.digitaloceanspaces.com/Chat-lab-bubble-logo-no_tail-removebg-white_face.png"
+image_filepath = "https://chat-lab-asssets.nyc3.cdn.digitaloceanspaces.com/Chat-lab-bubble-logo-white-circle-crop.png"
 
 # SET DEFAULT TEXT FOR WARNING AND ERROR MESSAGES
 # DO NOT CHANGE THIS TEXT:
