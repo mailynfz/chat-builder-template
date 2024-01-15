@@ -50,7 +50,7 @@ st.markdown("""
         color: {heading_color};
     }
     body .main .block-container h3 {
-        color: red;
+        color: {heading_color};
     }
     body .sidebar .block-container h1 {
         color: {heading_color}; 
@@ -59,7 +59,7 @@ st.markdown("""
         color: {heading_color}; 
     }
     body .sidebar .block-container h3 {
-        color: red;
+        color: {heading_color};
     }   
     .element-container .stTextInput input::placeholder {
         color: #E5751F; 
@@ -85,7 +85,7 @@ if image_filepath != "":
     if image_filepath.startswith("http"):
         html_str = f"""
                     <div style="text-align: center;">
-                    <img src='{image_filepath}' style='height:150px;'/>
+                    <img src='{image_filepath}' style='height: 175px;'/>
                     </div>
                     """
         st.sidebar.markdown(html_str, unsafe_allow_html=True)
@@ -98,7 +98,7 @@ else:
 # DEFINE ENVIRONMENT VARIABLES FROM STREAMLIT SECRETS (IF AVAILABLE)
 if st.secrets:
     if 'ASSISTANT_ID' in st.secrets:
-        ASSISTANT_ID = st.secrets['ASSISTANT_ID']
+        st.session_state.ASSISTANT_ID = st.secrets['ASSISTANT_ID']
     if 'OPENAI_API_KEY' in st.secrets:
         OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
     if 'PASSKEY' in st.secrets:
@@ -113,11 +113,11 @@ if "messages" not in st.session_state:
 
 # USER INPUT FOR API KEY
 API_KEY = st.sidebar.text_input("Enter your API key", type="password")
+if API_KEY == PASSKEY:
+    API_KEY = OPENAI_API_KEY
 
 # INITIALIZE A NEW CHAT THREAD
 if st.sidebar.button("Start New Chat"):
-    if API_KEY == PASSKEY:
-        API_KEY = OPENAI_API_KEY
     if API_KEY == "":
         st.error(error_message, icon="🚨")
     else:    
@@ -136,6 +136,14 @@ st.sidebar.markdown(f"{sidebar_text}", unsafe_allow_html=True)
 
 # CHAT INTERFACE SETUP 
 
+# format response to display math in chat
+def format_response(text):
+    extant = ['$','\\\\$','\[', '\]', '\(', '\)']
+    subs =  ['\$','\$','$$', '$$', '$', '$']
+    for i in range(len(subs)):
+        text = text.replace(extant[i], subs[i])
+    return text
+
 # Display existing messages in the chat
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
@@ -153,6 +161,7 @@ if prompt := st.chat_input(chat_box_text):
             st.write(str(format_prompt))
 
         # Add the user's message to the existing thread
+        client = OpenAI(api_key=API_KEY)
         client.beta.threads.messages.create(
             thread_id = st.session_state.THREAD_ID,
             role="user",
@@ -182,10 +191,11 @@ if prompt := st.chat_input(chat_box_text):
         ]
         for message in assistant_messages_for_run:
             response = message.content[0].text.value
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            formatted_response = format_response(response)
+            st.session_state.messages.append({"role": "assistant", "content": formatted_response})
             with st.chat_message("assistant"):
-                st.markdown(f"{response}", unsafe_allow_html=True)
-
+                st.markdown(f"{formatted_response}")
+                #st.markdown(f"{response}")
 
 # DEFINE FOOTER
 def footer(text):
